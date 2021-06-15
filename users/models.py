@@ -24,14 +24,21 @@ class User(AbstractUser):
         max_length=255,
     )
     first_name = models.CharField(
-        max_length=256,
         null=True,
         blank=True,
+        max_length=256,
     )
     email = models.EmailField(
-        max_length=75,
         null=True,
         blank=True,
+        max_length=75,
+    )
+    home_address = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="user_home_address",
     )
 
     def get_absolute_url(self):
