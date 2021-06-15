@@ -33,12 +33,12 @@ class User(AbstractUser):
         blank=True,
         max_length=75,
     )
-    home_address = models.OneToOneField(
-        settings.AUTH_USER_MODEL,
+    address = models.ForeignKey(
+        "home.Address",
         on_delete=models.CASCADE,
         null=True,
         blank=True,
-        related_name="user_home_address",
+        related_name="user_address",
     )
 
     def get_absolute_url(self):
